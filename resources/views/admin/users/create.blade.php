@@ -4,7 +4,7 @@
 <div class="container">
 <h1>Create Users</h1>
 
-{!! Form::open(['method'=>'POST','action'=>'AdminUsersController@create'])!!}
+{!! Form::open(['method'=>'POST','action'=>'AdminUsersController@store','files'=>true]) !!}
 
 <div class="form-group">
     {!! Form::label('name', 'Name:') !!}
@@ -22,8 +22,13 @@
 </div>
 
 <div class="form-group">
-    {!! Form::label('status', 'Status:') !!}
+    {!! Form::label('is_active', 'Status:') !!}
     {!! Form::select('is_active', array(1 => 'active',0 =>'Not Active'), 0, ['class'=>'form-control']) !!}
+</div>
+
+<div class="form-group">
+    {!! Form::label('photo_id', 'File:') !!}<br>
+    {!! Form::file('photo_id', null, ['class'=>'form-control']) !!}
 </div>
 
 <div class="form-group">
@@ -40,5 +45,6 @@
 </div>
 {!! Form::close() !!}
 
+@include('layouts.form_error')
 
 @stop

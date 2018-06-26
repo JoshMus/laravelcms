@@ -2,12 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\UsersRequest;
 use App\User;
 use App\Role;
 
 use Illuminate\Http\Request;
-use Illuminate\Http\UsersRequest;
-
 use App\Http\Requests;
 
 class AdminUsersController extends Controller
@@ -49,7 +48,9 @@ class AdminUsersController extends Controller
      */
     public function store(UsersRequest $request)
     {
-        return $request->all();
+        User::create($request->all());
+        return redirect('/admin/users');
+      //  return $request->all();
     }
 
     /**

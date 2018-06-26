@@ -30,4 +30,6 @@ Route::get('/admin/users', 'AdminUsersController@index')->name('adminhome');
 
 Route::get('/admin/users/edit', 'AdminUsersController@edit')->name('adminedit');
 
-Route::POST('/admin/users/create', 'AdminUsersController@create')->name('admincreate');
+Route::get('/admin/users/create', 'AdminUsersController@create')->name('admincreate');
+
+Route::POST('/admin/users/store', 'AdminUsersController@store');
