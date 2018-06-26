@@ -18,3 +18,16 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+/*
+|--------------------------------------------------------------------------
+| Admin Routes
+|--------------------------------------------------------------------------
+*/
+Route::resource('admin/users', 'AdminUsersController');
+
+Route::get('/admin/users', 'AdminUsersController@index')->name('adminhome');
+
+Route::get('/admin/users/edit', 'AdminUsersController@edit')->name('adminedit');
+
+Route::POST('/admin/users/create', 'AdminUsersController@create')->name('admincreate');
