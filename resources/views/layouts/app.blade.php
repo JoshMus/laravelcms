@@ -22,7 +22,7 @@
 </head>
 <body>
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light bg-warning navbar-laravel">
+        <nav class="navbar navbar-expand-md navbar-dark bg-primary navbar-laravel">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
                     {{ config('app.name', 'CMS') }}
@@ -53,8 +53,8 @@
                      Posts
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                      <a class="dropdown-item" href="#">Home</a>
-                      <a class="dropdown-item" href="#">Create</a>
+                      <a class="dropdown-item" href="{{ route('posts.index') }}">Home</a>
+                      <a class="dropdown-item" href="{{ route('posts.create') }}">Create</a>
                       <a class="dropdown-item" href="#">Edit</a>
                 </li>
 
