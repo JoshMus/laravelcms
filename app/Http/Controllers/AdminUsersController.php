@@ -7,7 +7,7 @@ use App\Http\Requests\UsersEditRequest;
 use App\User;
 use App\Role;
 use App\Photo;
-
+use Illuminate\Support\Facades\Session;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 
@@ -39,6 +39,7 @@ class AdminUsersController extends Controller
      */
     public function create()
     {
+        $users = User::all();
         $roles = Role::pluck('name','id')->all();
         return view('admin.users.create', compact('roles'));
     }
@@ -72,6 +73,7 @@ class AdminUsersController extends Controller
 
         User::create($input);
         // User::create($request->all());
+        Session::flash('create_user', 'The user has been created');
         return redirect('/admin/users');
       //  return $request->all();
     }
@@ -135,6 +137,8 @@ class AdminUsersController extends Controller
 
         $user->update($input);
 
+        Session::flash('update_user', 'The user has been updated');
+
         return redirect('/admin/users');
     }
 
@@ -146,6 +150,14 @@ class AdminUsersController extends Controller
      */
     public function destroy($id)
     {
-        //
+        User::findOrFail($id);
+
+        unlink(public_path() . $user->photo->file);
+
+        $user->delete();
+
+        Session::flash('deleted_user', 'The user has been deleted');
+
+        return redirect('/admin/users');
     }
 }

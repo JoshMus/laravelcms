@@ -50,13 +50,20 @@
 
 
 
-<div class="form-group">
-  
-    {!! Form::submit('Update User', ['class'=>'btn btn-primary']) !!}
-</div>
+<div style="margin: 0px 8px 8px 0px;" class="float-sm-left">
+    {!! Form::submit('Update User', ['class'=>'btn btn-primary ']) !!}
 </div>
 {!! Form::close() !!}
 
+
+
+{!! Form::open(['method'=>'DELETE','action'=>['AdminUsersController@destroy', $user->id]]) !!}
+
+<div class="float-sm-left">
+    {!! Form::submit('Delete User', ['class'=>'btn btn-danger ']) !!}
+</div>
+</div>
+{!! Form::close() !!}
 
 
 @include('layouts.form_error')

@@ -3,6 +3,25 @@
 @section('content')
 
 <div class="container">
+
+@if(Session::has('deleted_user'))
+<div class="alert alert-info" role="alert">
+{{session('deleted_user')}}
+</div>
+@endif
+
+@if(Session::has('update_user'))
+<div class="alert alert-info" role="alert">
+{{session('update_user')}}
+</div>
+@endif
+
+@if(Session::has('create_user'))
+<div class="alert alert-info" role="alert">
+{{session('create_user')}}
+</div>
+@endif
+
 <h1>Display Users</h1>
 
 <table class="table table-hover">
@@ -15,6 +34,7 @@
       <th scope="col">Role</th>
       <th scope="col">Status</th>
       <th scope="col">Date Created</th>
+      <th scope="col">Date Updated</th>
     </tr>
   </thead>
   <tbody>
@@ -29,6 +49,7 @@
       <td>{{$user->role->name}}</td>
       <td>{{$user->is_active == 1 ? 'Active' : 'Not Active'}}</td>
       <td>{{$user->created_at->diffForHumans()}}</td>
+      <td>{{$user->updated_at->diffForHumans()}}</td>
     </tr>
 
     @endforeach

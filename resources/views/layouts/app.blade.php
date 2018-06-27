@@ -72,7 +72,7 @@
                      Users
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                      <a class="dropdown-item" href="{{ route('adminhome') }}">Home</a>
+                      <a class="dropdown-item" href="{{ route('users.index') }}">Home</a>
                       <a class="dropdown-item" href="{{ route('users.create') }}">Create</a>
                       <a class="dropdown-item" href="{{ route('users.edit', auth()->user()->id) }}">Edit</a>
                 </li>
